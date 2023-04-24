@@ -1,3 +1,3 @@
-exports.createForm = (req,res)=>{
-    res.render("student/form");
+exports.register = (req,res)=>{
+    res.render("createUser");
 };
