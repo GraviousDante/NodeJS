@@ -21,3 +21,12 @@ listen(port, hostname, () => {
 app.set("view engine","ejs");
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.get("/list", (req,res) => {
+    User.find({}).then(rs=>{
+        res.render("list",{
+            item: rs
+        });
+    }).catch(err=>{
+        res.send(err);
+    });
+})

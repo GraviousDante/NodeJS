@@ -1,7 +1,8 @@
 const express = require("express");
-const router = express.Router();
-const controller = require("../controllers/userController");
+let controller = require("../controllers/userController");
+let router = express.Router();
 
+router.get("/",studentController.register);
 router.get("/register",userController.register);
 exports.create = async (req,res)=>{
     const user = new User({
