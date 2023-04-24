@@ -21,12 +21,25 @@ listen(port, hostname, () => {
 app.set("view engine","ejs");
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.get("/list", (req,res) => {
+app.get("/user-list", (req,res) => {
     User.find({}).then(rs=>{
-        res.render("list",{
+        res.render("/list",{
             item: rs
         });
     }).catch(err=>{
         res.send(err);
     });
 })
+
+app.get("/createUser", function (req,res){
+    const  Student = require("./src/models/user");
+    Student.find({}).then(rs=>{
+
+        res.render("/createUser",{
+            items: rs
+        });
+
+    }).catch(err=>{
+        res.send(err);
+    });
+});
